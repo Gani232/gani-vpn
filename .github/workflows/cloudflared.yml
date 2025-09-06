@@ -1,24 +1,19 @@
 name: Cloudflared Tunnel
-
 on: [push]
-
 jobs:
   tunnel:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Install cloudflared
         run: |
           curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
           sudo dpkg -i cloudflared.deb
-
       - name: Setup credentials
         run: |
           mkdir -p /home/runner/.cloudflared
          echo "${{ secrets.CLOUDFLARED_CREDS }}" > /home/runner/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11.json
-
       - name: Run tunnel
         run: |
           cloudflared tunnel --no-autoupdate \
