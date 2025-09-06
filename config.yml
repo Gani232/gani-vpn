@@ -4,4 +4,10 @@ credentials-file: /home/runner/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11
 ingress:
   - hostname: vpn.yofiproject.pro
     service: http://localhost:8080
+    originRequest:
+      httpHostHeader: localhost
+      noTLSVerify: true
+      auth:
+        user: yofi
+        password: supersecret123
   - service: http_status:404
