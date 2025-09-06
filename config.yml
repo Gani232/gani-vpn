@@ -1,7 +1,7 @@
-tunnel: myvpn
-credentials-file: ./myvpn.json
+tunnel: 4b9618b0-dda3-4c26-9ba5-9bc2443bff11
+credentials-file: /home/runner/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11.json
 
 ingress:
   - hostname: vpn.yofiproject.pro
-    service: tcp://localhost:51820   # WireGuard
+    service: http://localhost:8080
   - service: http_status:404
