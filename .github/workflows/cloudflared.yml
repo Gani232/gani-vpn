@@ -20,10 +20,10 @@ jobs:
           mkdir -p /home/runner/.cloudflared
           echo '${{ secrets.CLOUDFLARED_CREDS }}' > /home/runner/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11.json
 
-      - name: Setup origin cert
+      - name: Run tunnel with token
         run: |
-          mkdir -p /home/runner/.cloudflared
-          echo '${{ secrets.CLOUDFLARED_CERT }}' > /home/runner/.cloudflared/cert.pem
+          cloudflared tunnel --no-autoupdate run myvpn \
+            --token "${{ secrets.CLOUDFLARED_TOKEN }}"
 
       - name: Route DNS to tunnel
         run: |
