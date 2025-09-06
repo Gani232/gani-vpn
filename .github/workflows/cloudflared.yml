@@ -22,14 +22,6 @@ jobs:
         run: |
           cloudflared tunnel --no-autoupdate --token "${{ secrets.CLOUDFLARED_TOKEN }}" run myvpn
 
-
-      - name: Route DNS to tunnel
-        run: |
-          cloudflared tunnel route dns myvpn vpn.yofiproject.pro \
-            --credentials-file /home/runner/.cloudflared/<tunnel.json> \
-            --origincert /home/runner/.cloudflared/cert.pem
-
-
       - name: Run tunnel
         run: |
           cloudflared tunnel --no-autoupdate \
