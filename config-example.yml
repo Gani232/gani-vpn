@@ -1,0 +1,7 @@
+# Contoh config cloudflared
+tunnel: myvpn
+credentials-file: ./myvpn.json
+ingress:
+  - hostname: vpn.example.com
+    service: tcp://localhost:51820
+  - service: http_status:404
