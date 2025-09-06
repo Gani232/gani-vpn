@@ -7,5 +7,6 @@ echo "[INFO] Menjalankan Trojan/VLESS server..."
 # Contoh untuk Trojan
 trojan-go -config ./server-config.json &
 
+
 # Tunggu agar server tidak exit
 wait
