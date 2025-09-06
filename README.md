@@ -1,4 +1,4 @@
-# yofi-vpn
+# yofi-vpn (closed) eror
 Repo untuk jalankan Cloudflared Tunnel via GitHub Actions.
 
 ## Cara pakai
