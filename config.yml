@@ -1,7 +1,7 @@
-tunnel: 4b9618b0-dda3-4c26-9bc2443bff11
-credentials-file: /home/runner/.cloudflared/4b9618b0-dda3-4c26-9bc2443bff11.json
+tunnel: ---
+credentials-file: /home/runner/.cloudflared/---.json
 
 ingress:
-  - hostname: vpn.yofiproject.pro
+  - hostname: domain.com
     service: tcp://localhost:443
   - service: ws://localhost:443/vless
