@@ -21,8 +21,6 @@ jobs:
       - name: Route DNS to tunnel
         run: |
           cloudflared tunnel route dns 4b9618b0-dda3-4c26-9ba5-9bc2443bff11 vpn.yofiproject.pro
-            --credentials-file /home/runner/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11.json \
-            run autoprint-tunnel
 
       - name: Run tunnel
         run: |
