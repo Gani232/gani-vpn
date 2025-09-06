@@ -1,0 +1,7 @@
+tunnel: myvpn
+credentials-file: ./myvpn.json
+
+ingress:
+  - hostname: vpn.yofiproject.pro
+    service: tcp://localhost:51820   # WireGuard
+  - service: http_status:404
