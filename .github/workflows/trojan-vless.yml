@@ -1,0 +1,34 @@
+name: Trojan/VLESS Server
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  run-server:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Setup Cloudflared
+      run: |
+        curl -LO https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+        sudo dpkg -i cloudflared-linux-amd64.deb
+
+    - name: Download Trojan-Go
+      run: |
+        wget https://github.com/p4gefau1t/trojan-go/releases/latest/download/trojan-go-linux-amd64.zip
+        unzip trojan-go-linux-amd64.zip -d trojan-go
+        chmod +x trojan-go/trojan-go
+
+    - name: Start Trojan/VLESS Server
+      run: |
+        chmod +x trojan-vless/start.sh
+        ./trojan-vless/start.sh &
+
+    - name: Start Cloudflared Tunnel
+      run: |
+        cloudflared tunnel --url tcp://127.0.0.1:443
