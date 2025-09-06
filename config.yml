@@ -1,5 +1,5 @@
-tunnel: 4b9618b0-dda3-4c26-9ba5-9bc2443bff11
-credentials-file: /home/runner/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11.json
+tunnel: 4b9618b0-dda3-4c26-9bc2443bff11
+credentials-file: /home/runner/.cloudflared/4b9618b0-dda3-4c26-9bc2443bff11.json
 
 ingress:
   - hostname: vpn.yofiproject.pro
