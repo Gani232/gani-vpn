@@ -4,4 +4,4 @@ credentials-file: /home/runner/.cloudflared/4b9618b0-dda3-4c26-9bc2443bff11.json
 ingress:
   - hostname: vpn.yofiproject.pro
     service: tcp://localhost:443
-  - service: http_status:404
+  - service: ws://localhost:443/vless
