@@ -18,8 +18,13 @@ jobs:
           mkdir -p /home/runner/.cloudflared
           echo '${{ secrets.CLOUDFLARED_CREDS }}' > /home/runner/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11.json
 
+      - name: Route DNS to tunnel
+        run: |
+          cloudflared tunnel route dns autoprint-tunnel autoprint.domain.pro \
+            --credentials-file /home/runner/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11.json
+
       - name: Run tunnel
         run: |
           cloudflared tunnel --no-autoupdate \
             --credentials-file /home/runner/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11.json \
-            run 4b9618b0-dda3-4c26-9ba5-9bc2443bff11
+            run autoprint-tunnel
