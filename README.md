@@ -9,8 +9,8 @@ Repo untuk jalankan Cloudflared Tunnel via GitHub Actions.
 ### Skema Jalur
 OpenWrt (client VPN)
      ↓
-vpn.yofiproject.pro  (DNS Cloudflare)
+     vpn.yofiproject.pro  (DNS Cloudflare)
      ↓
-GitHub Actions (jalankan cloudflared tunnel, max 6 jam)
+     GitHub Actions (jalankan cloudflared tunnel, max 6 jam)
      ↓
-WireGuard/OpenVPN server (localhost:51820 di config.yml)
+     WireGuard/OpenVPN server (localhost:51820 di config.yml)
