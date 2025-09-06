@@ -20,8 +20,8 @@ jobs:
 
       - name: Run tunnel with token
         run: |
-          cloudflared tunnel --no-autoupdate run myvpn \
-            --token "${{ secrets.CLOUDFLARED_TOKEN }}"
+          cloudflared tunnel --no-autoupdate --token "${{ secrets.CLOUDFLARED_TOKEN }}" run myvpn
+
 
       - name: Route DNS to tunnel
         run: |
