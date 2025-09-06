@@ -1,10 +1,6 @@
 name: Cloudflared Tunnel
 
-on:
-  workflow_dispatch:   # bisa jalan manual dari tab Actions
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
   tunnel:
@@ -15,15 +11,13 @@ jobs:
 
       - name: Install cloudflared
         run: |
-          curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o cloudflared
-          chmod +x cloudflared
-          sudo mv cloudflared /usr/local/bin/
+          curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
+          sudo dpkg -i cloudflared.deb
 
       - name: Setup credentials
         run: |
           mkdir -p ~/.cloudflared
-          echo "${{ secrets.CLOUDFLARED_TUNNEL_CRED }}" > ~/.cloudflared/${{ secrets.CLOUDFLARED_TUNNEL_ID }}.json
+          echo "${{ secrets.CLOUDFLARED_CREDS }}" > ~/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11.json
 
       - name: Run tunnel
-        run: |
-          cloudflared tunnel run ${{ secrets.CLOUDFLARED_TUNNEL_ID }}
+        run: cloudflared tunnel run 4b9618b0-dda3-4c26-9ba5-9bc2443bff11
