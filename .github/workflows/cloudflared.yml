@@ -17,7 +17,10 @@ jobs:
       - name: Setup credentials
         run: |
           mkdir -p ~/.cloudflared
-          echo "${{ secrets.CLOUDFLARED_CREDS }}" > ~/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11.json
+          echo '${{ secrets.CLOUDFLARED_CREDS }}' > ~/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11.json
 
       - name: Run tunnel
-        run: cloudflared tunnel run 4b9618b0-dda3-4c26-9ba5-9bc2443bff11
+        run: |
+          cloudflared tunnel --no-autoupdate \
+            --credentials-file ~/.cloudflared/4b9618b0-dda3-4c26-9ba5-9bc2443bff11.json \
+            run 4b9618b0-dda3-4c26-9ba5-9bc2443bff11
